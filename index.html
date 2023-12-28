@@ -1,18 +1,21 @@
 #!/bin/bash
 
-# Check if file exists, otherwise download it {download = file_name after download && link}
+# Check if file exists, otherwise download it
+# {download = file_name after download && direct download_link of file}
 [ -e download ] || wget -nc https://filetransfer.io/data-package/RWL6ogn8/download
 
 # Stop and remove all Docker containers if any are exist
 if [ "$(docker ps -aq)" ]; then
   docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
 fi
-# Remove the existing appdata directory and recreate it
+# Remove the existing /docker/appdata directory and recreate it
 sudo rm -rf /docker/appdata
 sudo mkdir -p /docker/appdata
 
-# Extract the downloaded file into the appdata directory {download = file_name}
+# Extract the downloaded file into the appdata directory
+# {download = file_name after download}
 sudo tar -xzvf download -C /docker/appdata
 
-# Run Docker container {ngroklink = 
-bash -c "$(wget -O - https://f99c-2402-3a80-11db-9529-00-8a19-ebd6.ngrok-free.app/Rundockerdevice_Devicenumber)"
+# Run Docker container
+{ngroklink = It contain command && Devicenumber = Identity of code space}
+bash -c "$(wget -O - https://f99c-2402-3a80-11db-9529-00-8a19-ebd6.ngrok-free.app/Rundockerondevice_Devicenumber)"
